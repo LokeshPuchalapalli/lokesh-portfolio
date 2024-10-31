@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <link rel="stylesheet" href="portfolio.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <a href="#" class="logo">Portfolio</a>
+        <nav class="navbar">
+            <a href="#home" class="active">Home</a>
+            <a href="#about">About</a>
+            <a href="#skills">Skills</a>
+            <a href="#portfolio">Portfolio</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <section id="home" class="home">
+        <div class="home-content">
+            <h3>Hello, It's Me</h3>
+            <h1>Lokesh Puchalapalli</h1>
+            <h3>And I'm a <span class="multiple-text"></span></h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+            <div class="social-media">
+                <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+                <a href="#"><i class="fa-brands fa-github"></i></a>
+            </div>
+            <a href="#" id="download-cv" class="button">Download CV</a>
+        </div>
+        <div class="home-img">
+            <img src="https://res.cloudinary.com/dvw8rfwnq/image/upload/v1729495641/1705243027682_2-removebg-preview_yav8kc.png" alt="Lokesh Puchalapalli">
+        </div>
+    </section>
+
+    <section id="about">
+        <h2>About Me</h2>
+        <p>Your about content goes here.</p>
+    </section>
+
+    <section id="skills">
+        <h2>Skills</h2>
+        <p>HTML<br>CSS <br>JAVASCRIPT <br> PYTHON</p>
+    </section>
+
+    <section id="portfolio">
+        <h2>Portfolio</h2>
+        <p>Your portfolio content goes here.</p>
+    </section>
+
+    <section id="contact">
+        <h2>Contact</h2>
+        <p>If you have any questions, feel free to reach out!</p>
+        <p>Phone: <a href="tel:+1234567890">+91 9491238820</a></p>
+        <p>Email: <a href="mailto:your-email@example.com">lokesh682527@gmail.com</a></p>
+    </section>
+
+    <script>
+        // Animated Text Effect
+        const textElement = document.querySelector('.multiple-text');
+        const texts = ["Frontend Developer", "Web Designer", "Tech Enthusiast"];
+        let index = 0;
+
+        function typeText() {
+            let currentText = texts[index];
+            let letterIndex = 0;
+
+            function typeLetter() {
+                if (letterIndex < currentText.length) {
+                    textElement.textContent += currentText.charAt(letterIndex);
+                    letterIndex++;
+                    setTimeout(typeLetter, 100);
+                } else {
+                    setTimeout(() => {
+                        textElement.textContent = '';
+                        index = (index + 1) % texts.length;
+                        typeText();
+                    }, 2000);
+                }
+            }
+
+            typeLetter();
+        }
+
+        typeText();
+
+        // Download CV functionality
+        document.getElementById('download-cv').addEventListener('click', function(e) {
+            e.preventDefault();
+            const link = document.createElement('a');
+            link.href = 'https://res.cloudinary.com/YOUR_CLOUD_NAME/raw/upload/v1729495641/Your_Name_CV.pdf'; // Replace with the path to your CV file
+            link.download = 'Your_Name_CV.pdf';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        });
+    </script>
+</body>
+</html>
